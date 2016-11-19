@@ -1,0 +1,1 @@
+PYTHONPATH="$PYTHONPATH:../lib-poolsrv/" /usr/bin/twistd --nodaemon -y ./launcher.tac.py -l /dev/null

@@ -1,0 +1,10 @@
+for inst in `seq 1 8`; do 
+	INSTANCE="$inst" PYTHONPATH="$PYTHONPATH:../lib-poolsrv/" /usr/bin/twistd --nodaemon -y ./launcher.tac.py --pidfile="stratum-$inst.pid" -l /dev/null &
+done
+
+for job in `jobs -p`
+do
+	wait $job
+done
+
+trap 'echo signal; kill $(jobs -p); exit' SIGINT SIGTERM
